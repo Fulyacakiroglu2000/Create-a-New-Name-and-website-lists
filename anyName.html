@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initialscale=1.0">
+    <title>Fulyanın butonu</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fontawesome/
+   4.7.0/css/font-awesome.min.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div class="">
+        <ul id="listOfName"></ul>
+        <ul id="listOfSite"></ul>
+    </div>
+
+    <div class="">
+        <h1 class="">Add A New Name</h1>
+
+        <input type="text" id="name" placeholder="Add Name......">
+        <input type="form" id="site" placeholder="Add Name of site......">
+        <button class="btn" id="addNameButton">AddNameandSite</button>
+
+
+
+    </div>
+    <form action="action_page.php" method="get" target="_blank">
+
+        <p>
+
+
+            Website: <input type="search" name="website" placeholder="Name of website?">
+
+            <input type="submit" value="go">
+
+        </p>
+
+    </form>
+
+
+    <script>
+        var givenName = document.querySelector('#name')
+        var btnClass = document.querySelector('#addNameButton')
+        var listOfName = document.querySelector('#listOfName')
+        var givenSite = document.querySelector('#site')
+        var listOfSite = document.querySelector('#listOfSite')
+
+        btnClass.addEventListener('click', () => {
+            var actualName = givenName.value
+            var actualSite = givenSite.value
+
+
+            if (actualName.length != 0 && actualSite.length != 0) {
+
+                var createAnHTMLList = `<li class=""><div>${actualName}</div><button
+         onclick="removeNameFromTheList(this)">Remove Name</button>`
+
+                listOfName.innerHTML += createAnHTMLList
+                givenName.value = ''
+
+
+
+            } else {
+                givenName.classList.add('red')
+
+
+
+            }
+
+            if (actualName.length != 0 && actualSite.length != 0) {
+                var createAnHTMLList = `<li class=""><div>${actualSite}</div><button
+         onclick="removeSiteFromTheList(this)">Remove Site</button>`
+
+                listOfSite.innerHTML += createAnHTMLList
+
+                givenSite.value = ''
+
+
+
+
+
+            } else {
+
+                givenSite.classList.add('red')
+
+
+            }
+
+        })
+
+        function removeNameFromTheList(e) {
+            e.parentElement.remove()
+        }
+
+        function removeSiteFromTheList(e) {
+            e.parentElement.remove()
+
+
+
+        }
+    </script>
+
+
+
+
+</body>
+
+</html>
